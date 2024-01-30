@@ -1,4 +1,9 @@
-create table item (
-  id int unsigned primary key auto_increment not null,
-  title varchar(255) not null
+DROP DATABASE IF EXISTS AgendaPro;
+
+CREATE DATABASE AgendaPro;
+
+USE AgendaPro;
+
+CREATE TABLE user (
+    id INT primary key auto_increment NOT NULL, name VARCHAR(80) NOT NULL, email VARCHAR(80) NOT NULL, hashed_password VARCHAR(250) NOT NULL, image VARCHAR(250) NOT NULL DEFAULT '', admin BOOLEAN NOT NULL DEFAULT FALSE, points INT NOT NULL DEFAULT FALSE, podium BOOLEAN NOT NULL DEFAULT FALSE, tickets INT NOT NULL DEFAULT FALSE
 );
