@@ -1,5 +1,11 @@
 @import "settings";
 
-// @import "./components/adminUploadGame";
+@import "./pages/schedulePage";
+@import "./pages/home";
 
-// @import "./pages/arcadeGame";
+@import "./components/appointment";
+@import "./components/connexion";
+@import "./components/createAccount";
+@import "./components/header";
+@import "./components/schedule";
+@import "./components/menuUser";
