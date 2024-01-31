@@ -1,0 +1,22 @@
+.appointment-item {
+  z-index: 2;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1%;
+}
+
+.orange {
+  background-color: #fbb13c;
+}
+
+.red {
+  background-color: #a76571;
+}
+.green {
+  background-color: #bcd8c1;
+}
+.blue {
+  background-color: #0097b2;
+}

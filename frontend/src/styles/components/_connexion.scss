@@ -1,0 +1,260 @@
+.container-connexion {
+  background-color: #ffffff00;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  padding-top: 8%;
+  display: flex;
+  justify-content: center;
+  backdrop-filter: blur(5px);
+
+  .connexion-form {
+    border-radius: 15px;
+    border: 2px solid white;
+    width: 22vw;
+    height: 28vw;
+    background-color: var(--primary-color);
+  }
+
+  .header-container {
+    text-align: center;
+    width: 100%;
+    padding-top: 8%;
+
+    .logo {
+      width: 80px;
+    }
+
+    h1 {
+      font-size: 30px;
+      color: var(--secondary-color);
+      // font-family: var(--primary-font);
+    }
+  }
+
+  .login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 8%;
+    width: 100%;
+    height: 60%;
+  }
+  p {
+    font-weight: bold;
+    font-family: var(--secondary-font);
+    font-size: 18px;
+    color: #ffffff;
+    text-align: center;
+  }
+
+  input {
+    font-family: var(--primary-font);
+    padding: 5px;
+    font-size: 18px;
+    color: white;
+  }
+
+  .pseudo,
+  .motdepasse {
+    background-color: #026c7f;
+    border: 1px solid #5caab8;
+    border-radius: 5px;
+    width: 15vw;
+    height: 45px;
+  }
+  .mdp-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    .mdp {
+      width: 25px;
+      position: absolute;
+      right: 10px;
+      cursor: pointer;
+    }
+  }
+  .btn-connexion {
+    cursor: pointer;
+    font-family: var(--primary-font);
+    color: var(--secondary-color);
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #026c7f;
+    border: 1px solid white;
+    width: 8vw;
+    height: 45px;
+    border-radius: 5px;
+  }
+}
+
+.body-no-scroll {
+  overflow: hidden;
+}
+
+// RESPONSIVE
+@media screen and (max-width: 1550px) {
+  .container-connexion {
+    .connexion-form {
+      width: 25vw;
+      height: 35vw;
+    }
+
+    .pseudo,
+    .motdepasse {
+      width: 20vw;
+    }
+
+    .btn-connexion {
+      width: 12vw;
+    }
+  }
+}
+@media screen and (max-width: 1400px) {
+  .container-connexion {
+    .connexion-form {
+      width: 30vw;
+      height: 40vw;
+    }
+
+    .pseudo,
+    .motdepasse {
+      width: 20vw;
+    }
+
+    .btn-connexion {
+      width: 15vw;
+    }
+  }
+}
+@media screen and (max-width: 1115px) {
+  .container-connexion {
+    .connexion-form {
+      width: 35vw;
+      height: 45vw;
+    }
+
+    .pseudo,
+    .motdepasse {
+      width: 25vw;
+    }
+
+    .btn-connexion {
+      width: 20vw;
+    }
+  }
+}
+
+@media screen and (max-width: 970px) {
+  .container-connexion {
+    .connexion-form {
+      width: 45vw;
+      height: 60vw;
+    }
+    .pseudo,
+    .motdepasse {
+      width: 30vw;
+    }
+
+    .btn-connexion {
+      width: 20vw;
+    }
+  }
+}
+@media screen and (max-width: 750px) {
+  .container-connexion {
+    padding-top: 20%;
+    .connexion-form {
+      width: 50vw;
+      height: 65vw;
+    }
+    .pseudo,
+    .motdepasse {
+      width: 35vw;
+    }
+
+    .btn-connexion {
+      width: 25vw;
+    }
+  }
+}
+@media screen and (max-width: 660px) {
+  .container-connexion {
+    padding-top: 30%;
+    .connexion-form {
+      width: 60vw;
+      height: 80vw;
+    }
+    .pseudo,
+    .motdepasse {
+      width: 45vw;
+    }
+
+    .btn-connexion {
+      width: 30vw;
+    }
+  }
+}
+@media screen and (max-width: 530px) {
+  .container-connexion {
+    padding-top: 20%;
+    .connexion-form {
+      width: 80vw;
+      height: 110vw;
+    }
+    .pseudo,
+    .motdepasse {
+      width: 65vw;
+    }
+
+    .btn-connexion {
+      width: 40vw;
+    }
+  }
+}
+@media screen and (max-width: 450px) {
+  .container-connexion {
+    padding-top: 40%;
+    .connexion-form {
+      width: 85vw;
+      height: 115vw;
+    }
+    .pseudo,
+    .motdepasse {
+      width: 65vw;
+    }
+
+    .btn-connexion {
+      width: 40vw;
+    }
+  }
+}
+@media screen and (max-width: 375px) {
+  .container-connexion {
+    padding-top: 40%;
+    .connexion-form {
+      width: 90vw;
+      height: 130vw;
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      p {
+        font-size: 1.6rem;
+      }
+    }
+    .pseudo,
+    .motdepasse {
+      width: 70vw;
+    }
+
+    .btn-connexion {
+      width: 50vw;
+    }
+  }
+}

@@ -1,0 +1,43 @@
+.agenda-container {
+  font-family: "Arial", sans-serif;
+  margin: 20px;
+  width: 100%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  .agenda-grid {
+    width: 100%;
+    height: 90%;
+    border-collapse: collapse;
+    display: grid;
+    grid-template-columns: auto repeat(5, 1fr);
+    grid-template-rows: auto repeat(22, 1fr);
+    text-align: center;
+    border-radius: 10px;
+
+    .detailsHoursBasic {
+      border: 1px solid #0097b2;
+      padding: 8px;
+      background-color: #cfe8ef;
+    }
+
+    .detailsHours {
+      border-bottom: none;
+    }
+
+    .detailsHoursTop {
+      border-top: none;
+    }
+    .detailsHoursTopBottom {
+      border-top: none;
+      border-bottom: none;
+    }
+
+    .hours {
+      padding: 8px;
+      text-align: center;
+    }
+  }
+}
