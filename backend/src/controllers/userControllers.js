@@ -100,8 +100,25 @@ const getByToken = async (req, res) => {
   }
 };
 
+const checkExistence = async (req, res, next) => {
+  const checkUser = {
+    inputName: req.query.inputName,
+    inputFirstName: req.query.inputFirstName,
+    inputEmail: req.query.inputEmail,
+  };
+
+  try {
+    const user = await tables.user.checkExistence(checkUser);
+
+    res.json({ user });
+  } catch (err) {
+    next(err);
+  }
+};
+
 module.exports = {
   login,
   signin,
   getByToken,
+  checkExistence,
 };

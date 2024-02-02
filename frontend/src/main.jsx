@@ -5,6 +5,9 @@ import ProtectedRoute from "./services/ProtectedRoute";
 import App from "./App";
 import "./styles/index.scss";
 import SchedulePage from "./pages/SchedulePage";
+import SchedulePageCoworker, {
+  loadScheduleCoworker,
+} from "./pages/SchedulePageCoworker";
 import Home from "./pages/Home";
 
 const router = createBrowserRouter([
@@ -24,6 +27,15 @@ const router = createBrowserRouter([
             <SchedulePage />
           </ProtectedRoute>
         ),
+      },
+      {
+        path: "/planning/:id",
+        element: (
+          <ProtectedRoute>
+            <SchedulePageCoworker />
+          </ProtectedRoute>
+        ),
+        loader: loadScheduleCoworker,
       },
     ],
   },

@@ -1,0 +1,157 @@
+.allCoworkers {
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding-top: 15%;
+  display: flex;
+  justify-content: center;
+
+  .modalAllCoworkers {
+    border: black 1px solid;
+    height: 80%;
+    width: 70%;
+    border-radius: 15px;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 2%;
+    display: flex;
+    flex-direction: column;
+    align-items: space-around;
+
+    h1 {
+      text-align: center;
+    }
+    .allCoworkersContainer {
+      display: flex;
+      flex-direction: column;
+      height: 40%;
+      width: 100%;
+      gap: 10%;
+      .coworkersWaitingContainer {
+        display: flex;
+        flex-direction: column;
+        gap: 10%;
+        height: 130%;
+        width: 100%;
+        .elementsWaiting {
+          display: flex;
+          justify-content: flex-end;
+          gap: 15%;
+          width: 100%;
+          padding-right: 10%;
+        }
+        .coworkersAllTest {
+          background-color: white;
+          border-radius: 15px;
+          overflow-y: auto;
+          height: 100%;
+
+          .coworkersWaiting {
+            display: flex;
+            width: 100%;
+            justify-content: space-around;
+            color: black;
+            padding: 2%;
+
+            a {
+              text-decoration: none;
+              color: black;
+              &:hover {
+                transform: scale(1.2);
+              }
+            }
+
+            .inputSelect {
+              cursor: pointer;
+            }
+
+            .inputSelect input {
+              display: none;
+            }
+
+            .inputSelect svg {
+              overflow: visible;
+            }
+
+            .path {
+              fill: none;
+              stroke: black;
+              stroke-width: 6;
+              stroke-linecap: round;
+              stroke-linejoin: round;
+              transition:
+                stroke-dasharray 0.5s ease,
+                stroke-dashoffset 0.5s ease;
+              stroke-dasharray: 241 9999999;
+              stroke-dashoffset: 0;
+            }
+
+            .inputSelect input:checked ~ svg .path {
+              stroke-dasharray: 70.5096664428711 9999999;
+              stroke-dashoffset: -262.2723388671875;
+            }
+          }
+        }
+        .coworkersWaiting {
+          display: flex;
+          width: 100%;
+          background-color: white;
+          border-radius: 15px;
+          justify-content: space-around;
+          color: black;
+          padding: 2%;
+
+          a {
+            text-decoration: none;
+            color: black;
+            &:hover {
+              transform: scale(1.2);
+            }
+          }
+
+          .inputSelect {
+            cursor: pointer;
+          }
+
+          .inputSelect input {
+            display: none;
+          }
+
+          .inputSelect svg {
+            overflow: visible;
+          }
+
+          .path {
+            fill: none;
+            stroke: black;
+            stroke-width: 6;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            transition:
+              stroke-dasharray 0.5s ease,
+              stroke-dashoffset 0.5s ease;
+            stroke-dasharray: 241 9999999;
+            stroke-dashoffset: 0;
+          }
+
+          .inputSelect input:checked ~ svg .path {
+            stroke-dasharray: 70.5096664428711 9999999;
+            stroke-dashoffset: -262.2723388671875;
+          }
+        }
+      }
+    }
+  }
+  ::-webkit-scrollbar {
+    height: 7px;
+    width: 7px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--secondary-color);
+    border-radius: 5px;
+  }
+}

@@ -4,14 +4,31 @@ import { fr } from "date-fns/locale";
 import PropTypes from "prop-types";
 import axios from "axios";
 import Appointment from "./Appointment";
+import AppointmentSelected from "./AppointmentSelected";
+import NewAppointment from "./NewAppointment";
 import UserContext from "../contexts/UserContext";
+import AllCoworkers from "./AllCoworkers";
+import NewCoworker from "./NewCoworker";
 
-function Schedule({ setCurrentWeek, dateOfTheDay }) {
+function Schedule({
+  setCurrentWeek,
+  dateOfTheDay,
+  setOpenNewCoworker,
+  setOpenAllCoworkers,
+  openAllCoworkers,
+  openNewCoworker,
+  coworkers,
+  listCoworkersAttente,
+}) {
   const { userConnected } = useContext(UserContext);
 
   const [daysInCurrentWeek, setDaysInCurrentWeek] = useState([]);
   const [allAppointments, setAllAppointments] = useState([]);
   const [appointmentsFormatted, setAppointmentsFormatted] = useState([]);
+  const [openAppointment, setOpenAppointment] = useState(false);
+  const [appointmentSelected, setAppointmentSelected] = useState([]);
+  const [saveNewAppointment, setSaveNewAppointment] = useState([]);
+  const [openNewAppointment, setOpenNewAppointment] = useState(false);
 
   const scheduleUser = async () => {
     if (userConnected) {
@@ -36,7 +53,7 @@ function Schedule({ setCurrentWeek, dateOfTheDay }) {
 
   useEffect(() => {
     scheduleUser();
-  }, [userConnected]);
+  }, []);
 
   const initializeAppointments = () => {
     const newAppointments = [];
@@ -51,6 +68,7 @@ function Schedule({ setCurrentWeek, dateOfTheDay }) {
         category,
         place,
         allDay,
+        title,
         appointmentId,
       } = appointment;
       const formattedDay = new Date(dateStart);
@@ -68,12 +86,17 @@ function Schedule({ setCurrentWeek, dateOfTheDay }) {
         category,
         place,
         allDay,
+        title,
         appointmentId,
       };
       newAppointments.push(newAppointment);
     });
     setAppointmentsFormatted(newAppointments);
   };
+
+  useEffect(() => {
+    initializeAppointments();
+  }, [allAppointments]);
 
   useEffect(() => {
     const weekNumber = getISOWeek(dateOfTheDay);
@@ -117,13 +140,40 @@ function Schedule({ setCurrentWeek, dateOfTheDay }) {
     { hour: "18:30" },
   ];
 
-  // function handleSave(day, hour) {
-  //   console.log(day);
-  //   console.log(hour);
-  // }
+  function handleSave(day, hour) {
+    const newAppointment = [];
+    newAppointment.push(day);
+    newAppointment.push(hour);
+    setSaveNewAppointment(newAppointment);
+    setOpenNewAppointment(true);
+  }
 
   return (
     <div className="agenda-container">
+      {openAllCoworkers && (
+        <AllCoworkers
+          coworkers={coworkers}
+          listCoworkersAttente={listCoworkersAttente}
+          setOpenAllCoworkers={setOpenAllCoworkers}
+        />
+      )}
+      {openNewCoworker && (
+        <NewCoworker setOpenNewCoworker={setOpenNewCoworker} />
+      )}
+      {openNewAppointment && (
+        <NewAppointment
+          scheduleUser={scheduleUser}
+          setOpenNewAppointment={setOpenNewAppointment}
+          saveNewAppointment={saveNewAppointment}
+        />
+      )}
+      {openAppointment && (
+        <AppointmentSelected
+          scheduleUser={scheduleUser}
+          setOpenAppointment={setOpenAppointment}
+          appointmentSelected={appointmentSelected}
+        />
+      )}
       <div className="agenda-grid">
         {daysInCurrentWeek.map((day, index) => (
           <div key={day} style={{ gridColumn: `${index + 2}`, gridRow: "1" }}>
@@ -174,7 +224,7 @@ function Schedule({ setCurrentWeek, dateOfTheDay }) {
                       gridColumn: `${colIndex + 2}`,
                       gridRow: `${rowIndex + 2}`,
                     }}
-                    // onClick={() => handleSave(day, hour)}
+                    onClick={() => handleSave(day, hour)}
                   />
                 );
               })}
@@ -184,6 +234,8 @@ function Schedule({ setCurrentWeek, dateOfTheDay }) {
         <Appointment
           appointments={appointmentsFormatted}
           daysInCurrentWeek={daysInCurrentWeek}
+          setOpenAppointment={setOpenAppointment}
+          setAppointmentSelected={setAppointmentSelected}
         />
       </div>
     </div>
@@ -193,6 +245,22 @@ function Schedule({ setCurrentWeek, dateOfTheDay }) {
 Schedule.propTypes = {
   setCurrentWeek: PropTypes.func.isRequired,
   dateOfTheDay: PropTypes.instanceOf(Date).isRequired,
+  setOpenNewCoworker: PropTypes.func.isRequired,
+  setOpenAllCoworkers: PropTypes.func.isRequired,
+  openAllCoworkers: PropTypes.bool.isRequired,
+  openNewCoworker: PropTypes.bool.isRequired,
+  coworkers: PropTypes.func.isRequired,
+  listCoworkersAttente: PropTypes.arrayOf(
+    PropTypes.shape({
+      askingCoworker: PropTypes.number.isRequired,
+      autorisation: PropTypes.number.isRequired,
+      coworkerId: PropTypes.number.isRequired,
+      enterprise: PropTypes.string.isRequired,
+      firstName: PropTypes.string.isRequired,
+      lastName: PropTypes.string.isRequired,
+      workerId: PropTypes.number.isRequired,
+    })
+  ).isRequired,
 };
 
 export default Schedule;

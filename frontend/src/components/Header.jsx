@@ -5,9 +5,9 @@ import { addDays, subDays } from "date-fns";
 function Header({ currentWeek, setDateOfTheDay, dateOfTheDay }) {
   return (
     <div className="header">
-      <img src="/images/AgendaPro.png" alt="logo Agenda Pro" />
+      <img className="logo" src="/images/AgendaPro.png" alt="logo Agenda Pro" />
 
-      <button type="button" className="">
+      <button type="button">
         <img
           role="presentation"
           onClick={() => setDateOfTheDay(subDays(dateOfTheDay, 7))}
