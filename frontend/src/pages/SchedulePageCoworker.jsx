@@ -1,5 +1,6 @@
 // import { useEffect } from "react";
 import axios from "axios";
+// import MenuUser from "../components/MenuUser";
 // import { useLoaderData } from "react-router-dom";
 
 function SchedulePageCoworker() {
@@ -9,7 +10,12 @@ function SchedulePageCoworker() {
   //     console.log(scheduleCoworker);
   //   }, []);
 
-  return <div>Schedule Coworker</div>;
+  return (
+    <div>
+      Schedule Coworker
+      {/* <MenuUser /> */}
+    </div>
+  );
 }
 
 export const loadScheduleCoworker = async ({ params }) => {
