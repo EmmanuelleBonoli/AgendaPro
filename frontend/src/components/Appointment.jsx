@@ -1,14 +1,19 @@
 import PropTypes from "prop-types";
-// import { useEffect } from "react";
 
-function Appointment({ appointments, daysInCurrentWeek }) {
+function Appointment({
+  appointments,
+  daysInCurrentWeek,
+  setOpenAppointment,
+  setAppointmentSelected,
+}) {
   const filteredAppointments = appointments.filter((appointment) =>
     daysInCurrentWeek.includes(appointment.dateStart)
   );
 
-  // useEffect(() => {
-  //   console.log("appointments from appointment", appointments);
-  // }, [appointments, daysInCurrentWeek]);
+  function handleOpenAppointment(appointment) {
+    setOpenAppointment(true);
+    setAppointmentSelected(appointment);
+  }
 
   return (
     <>
@@ -27,8 +32,10 @@ function Appointment({ appointments, daysInCurrentWeek }) {
               2
             } / span ${appointment.duration * 2}`,
           }}
+          onClick={() => handleOpenAppointment(appointment)}
+          role="presentation"
         >
-          {appointment.commentary}
+          {appointment.title}
         </div>
       ))}
     </>
@@ -37,6 +44,8 @@ function Appointment({ appointments, daysInCurrentWeek }) {
 
 Appointment.propTypes = {
   daysInCurrentWeek: PropTypes.arrayOf(PropTypes.string).isRequired,
+  setOpenAppointment: PropTypes.func.isRequired,
+  setAppointmentSelected: PropTypes.func.isRequired,
   appointments: PropTypes.arrayOf(
     PropTypes.shape({
       allDay: PropTypes.number.isRequired,

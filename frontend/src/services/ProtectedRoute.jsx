@@ -10,7 +10,7 @@ function ProtectedRoute({ children }) {
 
   const fetchUser = async () => {
     const user = JSON.parse(localStorage.getItem("token"));
-    if (!user.token) {
+    if (!user || !user.token) {
       return navigate("/");
     }
     const res = await axios.get(

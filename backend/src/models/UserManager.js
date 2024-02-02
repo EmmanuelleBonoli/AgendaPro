@@ -39,6 +39,14 @@ class UserManager extends AbstractManager {
     );
     return result;
   }
+
+  async checkExistence({ inputName, inputFirstName, inputEmail }) {
+    const [result] = await this.database.query(
+      `select * from ${this.table} where lastName = ? AND firstName = ? AND email = ?`,
+      [inputName, inputFirstName, inputEmail]
+    );
+    return result;
+  }
 }
 
 module.exports = UserManager;
